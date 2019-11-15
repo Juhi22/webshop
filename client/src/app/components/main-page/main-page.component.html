@@ -1,0 +1,26 @@
+<div>
+  <div>
+    <p>Name of product</p>
+    <input [(ngModel)]="productName">
+    <div>{{productName}}</div>
+  </div>
+
+  <div>
+      <p>Price of product</p>
+      <input [(ngModel)]="productPrice">
+      <div>{{productPrice}}</div>
+  </div>
+
+  <button (click)="addProduct()">Add product</button>
+  <div>
+    <p>List of products:</p>
+    <div>
+      <div *ngFor="let product of products">
+        {{product.name}}   {{product.price}} HUF
+      </div>
+    </div>
+    <div *ngIf="isEmpty()">
+        <p>No products are in the store. Add some!</p>
+    </div>
+  </div>
+</div>

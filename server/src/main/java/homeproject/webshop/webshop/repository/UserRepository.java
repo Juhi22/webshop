@@ -5,8 +5,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UserRepository extends JpaRepository<WebShopUser, Long> {
 
-    public WebShopUser findByUserName(String userName);
+    //TODO auth
+    WebShopUser findByUserName(String userName);
 
-    public WebShopUser findByPassword(String password);
+    //TODO auth
+    WebShopUser findByPassword(String password);
 
 }

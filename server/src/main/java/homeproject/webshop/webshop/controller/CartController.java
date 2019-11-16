@@ -12,24 +12,24 @@ public interface CartController {
     /**
      * Add a cart
      *
-     * @param cart
+     * @param cart Added cart
      * @return ResponseEntity<Cart>
      */
-    public ResponseEntity<Cart> addCart(Cart cart);
+    ResponseEntity<Cart> addCart(Cart cart);
 
     /**
      * Get all existing carts
      *
      * @return ResponseEntity<List<Cart>>
      */
-    public ResponseEntity<List<Cart>> getAllCarts();
+    ResponseEntity<List<Cart>> getAllCarts();
 
     /**
      * Add a product to the cart
      *
-     * @param product
-     * @param id
+     * @param product Added product
+     * @param id Id of the cart
      * @return ResponseEntity<Cart>
      */
-    public ResponseEntity<Cart> addProductToCart(Product product, Long id);
+    ResponseEntity<Cart> addProductToCart(Product product, Long id);
 }

@@ -11,6 +11,9 @@ export class MainPageComponent implements OnInit {
 
   constructor(private http: HttpClient) {}
 
+  //baseUrl: string = 'http://192.168.0.50:8050';
+  baseUrl: string = 'http://192.168.1.4:8050';
+
   productName: string = '';
   productPrice: number = 0;
   products: Product[] = [];
@@ -21,7 +24,7 @@ export class MainPageComponent implements OnInit {
   }
 
   getProducts() {
-    return this.http.get<Product[]>('http://192.168.0.50:8050/product/getAllProducts')
+    return this.http.get<Product[]>(this.baseUrl + '/product/getAllProducts')
     .subscribe(data => this.products = data);
   }
 

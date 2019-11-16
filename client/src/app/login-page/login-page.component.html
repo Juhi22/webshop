@@ -5,16 +5,16 @@
 
     </p>
     <span>
-      <input placeholder="Username" [(ngModel)]="username">
+      <input placeholder="Username" [(ngModel)]="username" (keydown.enter)="keydownEnter()">
     </span>
   </div>
   <div fxLayout="column" fxLayoutAlign="center center">
     <p>
       Password
     </p>
-    <input placeholder="Password" [(ngModel)]="password">
+    <input placeholder="Password" [(ngModel)]="password" (keydown.enter)="keydownEnter()">
   </div>
   <div style="margin-top: 10px">
-    <button (click)="login()">Login</button>
+    <button (click)="login()" [disabled]="!username || !password">Login</button>
   </div>
 </div>

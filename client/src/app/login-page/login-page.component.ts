@@ -59,4 +59,9 @@ export class LoginPageComponent implements OnInit {
     });
   }
 
+  keydownEnter() {
+    if(this.username && this.password) {
+      this.login();
+    }
+  }
 }

@@ -1,7 +1,10 @@
 package homeproject.webshop.webshop.domain;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 @Entity
 @Table(name = "product")
@@ -20,6 +23,15 @@ public class Product {
 
     @Column
     private Integer quantity;
+
+    @Column
+    private ProductCategories category;
+
+    @Column
+    private List<Integer> ratings;
+
+    @Column
+    private Double rating;
 
     @ManyToMany(mappedBy = "products")
     Set<Cart> carts;
@@ -56,6 +68,30 @@ public class Product {
 
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
+    }
+
+    public ProductCategories getCategory() {
+        return category;
+    }
+
+    public void setCategory(ProductCategories category) {
+        this.category = category;
+    }
+
+    public List<Integer> getRatings() {
+        return ratings;
+    }
+
+    public void setRatings(List<Integer> ratings) {
+        this.ratings = ratings;
+    }
+
+    public Double getRating() {
+        return rating;
+    }
+
+    public void setRating(Double rating) {
+        this.rating = rating;
     }
 
     public Set<Cart> getCarts() {

@@ -2,31 +2,32 @@ package homeproject.webshop.webshop.service;
 
 import homeproject.webshop.webshop.domain.Cart;
 import homeproject.webshop.webshop.domain.Product;
-import homeproject.webshop.webshop.repository.CartRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
-public class CartService {
+public interface CartService {
 
-    @Autowired
-    private CartRepository cartRepository;
+    /**
+     * Add a cart
+     *
+     * @param cart Added cart
+     * @return Cart
+     */
+    Cart addCart(Cart cart);
 
-    //TODO all null etc...
-    public Cart addCart(Cart cart){
-        return cartRepository.save(cart);
-    }
+    /**
+     * Get all carts
+     *
+     * @return List<Cart>
+     */
+    List<Cart> getAllCarts();
 
-    public List<Cart> getAllCarts(){
-        return cartRepository.findAll();
-    }
-
-    public Cart addProductToCart(Product product, Long id){
-        if(cartRepository.findById(id).isPresent()) {
-            cartRepository.findById(id).get().getProducts().add(product);
-        }
-        return cartRepository.findById(id).get();
-    }
+    /**
+     * Add product to cart
+     *
+     * @param product Added product
+     * @param id Id of the cart
+     * @return Cart
+     */
+    Cart addProductToCart(Product product, Long id);
 }

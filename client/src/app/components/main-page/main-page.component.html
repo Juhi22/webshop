@@ -1,14 +1,14 @@
 <div>
   <div>
     <p>Name of product</p>
-    <input [(ngModel)]="productName">
-    <div>{{productName}}</div>
+    <input [(ngModel)]="product.name">
+    <div>{{product.name}}</div>
   </div>
 
   <div>
       <p>Price of product</p>
-      <input [(ngModel)]="productPrice">
-      <div>{{productPrice}}</div>
+      <input [(ngModel)]="product.price">
+      <div>{{product.price}}</div>
   </div>
 
   <button (click)="addProduct()">Add product</button>

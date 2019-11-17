@@ -23,4 +23,15 @@ public class ProductServiceImpl implements ProductService{
         return productRepository.findAll();
     }
 
+    @Override
+    public Product addNewRating(Product product, Integer rating) {
+        Product recentProduct = null;
+        if(productRepository.findById(product.getId()).isPresent()){
+            recentProduct = productRepository.findById(product.getId()).get();
+            recentProduct.getRatings().add(rating);
+            recentProduct.setRating(recentProduct.getRatings().stream().mapToInt(rate -> rate).summaryStatistics().getAverage());
+        }
+        return recentProduct;
+    }
+
 }

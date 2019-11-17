@@ -21,4 +21,13 @@ public interface ProductService {
      */
     List<Product> getAllProducts();
 
+    /**
+     * Add rating to product
+     *
+     * @param product Rated product
+     * @param rating Given rating to product
+     * @return Product
+     */
+    Product addNewRating(Product product, Integer rating);
+
 }

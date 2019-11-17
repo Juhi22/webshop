@@ -28,4 +28,10 @@ public class ProductControllerImpl implements ProductController {
         return ResponseEntity.ok(productService.getAllProducts());
     }
 
+    @Override
+    @PostMapping("/addNewRating")
+    public ResponseEntity<Product> addNewRating(@RequestBody Product product, @PathVariable Integer rating) {
+        return ResponseEntity.ok(productService.addNewRating(product, rating));
+    }
+
 }

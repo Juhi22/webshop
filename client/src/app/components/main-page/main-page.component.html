@@ -1,26 +1,45 @@
+<div style="height: 100%;">
 <div>
   <div>
     <p>Name of product</p>
     <input [(ngModel)]="product.name">
-    <div>{{product.name}}</div>
   </div>
 
   <div>
       <p>Price of product</p>
       <input [(ngModel)]="product.price">
-      <div>{{product.price}}</div>
   </div>
 
   <button (click)="addProduct()">Add product</button>
+  
+</div>
+<div>
   <div>
     <p>List of products:</p>
-    <div>
-      <div *ngFor="let product of products">
-        {{product.name}}   {{product.price}} HUF
+    <button (click)="addProduct()">Add product</button>
+      <div fxLayout="column" >
+        <div fxLayout="row" fxLayoutAlign="start center" 
+        fxLayout.xs="column" fxLayoutAlign.xs="center start">
+          <span fxFlex="50" >
+            Product Name
+          </span>
+          <span fxFlex="50">
+            Product Price
+          </span>
+        </div>
+        <div *ngFor="let product of products" fxLayout="row" fxLayoutAlign="start center" 
+            fxLayout.xs="column" fxLayoutAlign.xs="center start">
+          <span fxFlex="50">
+            {{product.name}}
+          </span>
+          <span fxFlex="50">
+            {{product.price}} HUF
+          </span>     
+        </div>        
       </div>
-    </div>
     <div *ngIf="isEmpty()">
         <p>No products are in the store. Add some!</p>
     </div>
   </div>
+</div>
 </div>

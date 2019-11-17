@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Product } from 'src/app/model/product';
 import { ProductService } from 'src/app/services/api/product.service';
@@ -8,7 +8,7 @@ import { ProductService } from 'src/app/services/api/product.service';
   templateUrl: './main-page.component.html',
   styleUrls: ['./main-page.component.css']
 })
-export class MainPageComponent implements OnInit {
+export class MainPageComponent implements OnInit, AfterViewInit {
 
   constructor(private http: HttpClient,
               private productServ: ProductService) {}
@@ -17,9 +17,26 @@ export class MainPageComponent implements OnInit {
 
   products: Product[] = [];
   product = {} as Product;
+  isSmall: boolean;
+  productName: string;
+  productPrice: string;
 
   ngOnInit() {
     this.getProducts();
+  }
+
+  ngAfterViewInit(): void {
+   // const height = document.getElementById('cont').offsetHeight;
+    const width = document.getElementById('cont').offsetWidth;
+
+    // TODO: if small only show badges not all the events
+    if (width <= 700) {
+      console.log('small');
+      this.isSmall = true;
+    } else {
+      this.isSmall = false;
+    }
+
   }
 
   getProducts() {

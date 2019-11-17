@@ -24,10 +24,10 @@ public interface ProductService {
     /**
      * Add rating to product
      *
-     * @param product Rated product
+     * @param id Id of rated product
      * @param rating Given rating to product
      * @return Product
      */
-    Product addNewRating(Product product, Integer rating);
+    Product addNewRating(Long id, Integer rating);
 
 }

@@ -3,8 +3,6 @@ package homeproject.webshop.webshop.domain;
 import javax.persistence.*;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 @Entity
 @Table(name = "product")
@@ -28,6 +26,7 @@ public class Product {
     private ProductCategories category;
 
     @Column
+    @ElementCollection(targetClass=Integer.class)
     private List<Integer> ratings;
 
     @Column

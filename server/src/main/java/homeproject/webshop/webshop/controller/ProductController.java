@@ -25,9 +25,9 @@ public interface ProductController {
     /**
      * Add rating to product
      *
-     * @param product Rated product
+     * @param id Id of rated product
      * @param rate Given rating to product
      * @return ResponseEntity<Product>
      */
-    ResponseEntity<Product> addNewRating(Product product, Integer rate);
+    ResponseEntity<Product> addNewRating(Long id, Integer rate);
 }

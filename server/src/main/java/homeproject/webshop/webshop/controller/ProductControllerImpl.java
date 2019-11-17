@@ -29,9 +29,9 @@ public class ProductControllerImpl implements ProductController {
     }
 
     @Override
-    @PostMapping("/addNewRating")
-    public ResponseEntity<Product> addNewRating(@RequestBody Product product, @PathVariable Integer rating) {
-        return ResponseEntity.ok(productService.addNewRating(product, rating));
+    @PostMapping("/addNewRating/{id}/{rating}")
+    public ResponseEntity<Product> addNewRating(@PathVariable Long id, @PathVariable Integer rating) {
+        return ResponseEntity.ok(productService.addNewRating(id, rating));
     }
 
 }

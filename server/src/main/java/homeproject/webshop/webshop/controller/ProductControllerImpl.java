@@ -34,4 +34,10 @@ public class ProductControllerImpl implements ProductController {
         return ResponseEntity.ok(productService.addNewRating(id, rating));
     }
 
+    @Override
+    @PostMapping("/postComment/{productId}/{userId}")
+    public ResponseEntity<Product> postComment(@RequestParam(value = "text") String text,@PathVariable Long productId,@PathVariable Long userId) {
+        return ResponseEntity.ok(productService.postComment(text, productId, userId));
+    }
+
 }

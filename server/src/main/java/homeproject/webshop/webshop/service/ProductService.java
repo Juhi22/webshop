@@ -30,4 +30,14 @@ public interface ProductService {
      */
     Product addNewRating(Long id, Integer rating);
 
+    /**
+     * Post a comment to the product
+     *
+     * @param text Commented text
+     * @param productId Id of product
+     * @param userId Id of user
+     * @return Product
+     */
+    Product postComment(String text, Long productId, Long userId);
+
 }

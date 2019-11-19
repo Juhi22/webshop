@@ -36,8 +36,11 @@ public class Product {
     private Double rating;
 
     @Column
-    @ElementCollection(targetClass = String.class)
-    private List<String> comments;
+    @ElementCollection(targetClass = Comment.class)
+    private List<Comment> comments;
+
+    @Column
+    private String description;
 
     @ManyToMany(mappedBy = "products")
     Set<Cart> carts;

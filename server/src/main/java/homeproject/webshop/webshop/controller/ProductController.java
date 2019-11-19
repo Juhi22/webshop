@@ -30,4 +30,14 @@ public interface ProductController {
      * @return ResponseEntity<Product>
      */
     ResponseEntity<Product> addNewRating(Long id, Integer rate);
+
+    /**
+     * Post a comment to the product
+     *
+     * @param text Commented text
+     * @param productId Id of product
+     * @param userId Id of user
+     * @return ResponseEntity<Product>
+     */
+    ResponseEntity<Product> postComment(String text, Long productId, Long userId);
 }

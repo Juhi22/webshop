@@ -15,7 +15,6 @@ export class ProductService {
     baseUrl: string = this.baseUrlServ.getBaseUrl();
 
   getProducts() {
-    console.log(this.baseUrl);
     return this.httpClient.get<Product[]>(this.baseUrl + '/product/getAllProducts');
   }
 

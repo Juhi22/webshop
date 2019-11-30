@@ -1,10 +1,13 @@
 package homeproject.webshop.webshop.domain;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
 @Table(name = "cart")
+@Data
 public class Cart {
 
     @Id
@@ -22,29 +25,4 @@ public class Cart {
             inverseJoinColumns = @JoinColumn(name = "product_id"))
     private Set<Product> products;
 
-    public Cart(){}
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public WebShopUser getWebShopUser() {
-        return webShopUser;
-    }
-
-    public void setWebShopUser(WebShopUser webShopUser) {
-        this.webShopUser = webShopUser;
-    }
-
-    public Set<Product> getProducts() {
-        return products;
-    }
-
-    public void setProducts(Set<Product> products) {
-        this.products = products;
-    }
 }

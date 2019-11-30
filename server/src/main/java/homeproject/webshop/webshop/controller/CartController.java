@@ -2,33 +2,34 @@ package homeproject.webshop.webshop.controller;
 
 import homeproject.webshop.webshop.domain.Cart;
 import homeproject.webshop.webshop.domain.Product;
-import homeproject.webshop.webshop.service.CartService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
-@RestController
-@RequestMapping("/cart")
-public class CartController {
+public interface CartController {
 
-    @Autowired
-    private CartService cartService;
+    /**
+     * Add a cart
+     *
+     * @param cart Added cart
+     * @return ResponseEntity<Cart>
+     */
+    ResponseEntity<Cart> addCart(Cart cart);
 
-    @PostMapping("/addCart")
-    public ResponseEntity<Cart> addCart(@RequestBody Cart cart){
-        return ResponseEntity.ok(cartService.addCart(cart));
-    }
+    /**
+     * Get all existing carts
+     *
+     * @return ResponseEntity<List<Cart>>
+     */
+    ResponseEntity<List<Cart>> getAllCarts();
 
-    @GetMapping("/getAllCarts")
-    public ResponseEntity<List<Cart>> getAllCarts(){
-        return ResponseEntity.ok(cartService.getAllCarts());
-    }
-
-    @PostMapping("/addProductToCart/{id}")
-    public ResponseEntity<Cart> addProductToCart(@RequestBody Product product,@PathVariable Long id){
-        return ResponseEntity.ok(cartService.addProductToCart(product, id));
-    }
-
+    /**
+     * Add a product to the cart
+     *
+     * @param product Added product
+     * @param id Id of the cart
+     * @return ResponseEntity<Cart>
+     */
+    ResponseEntity<Cart> addProductToCart(Product product, Long id);
 }

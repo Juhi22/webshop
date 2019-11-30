@@ -1,10 +1,14 @@
 package homeproject.webshop.webshop.domain;
 
+import lombok.Data;
+
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
 @Table(name = "product")
+@Data
 public class Product {
 
     @Id
@@ -21,48 +25,23 @@ public class Product {
     @Column
     private Integer quantity;
 
+    @Column
+    private ProductCategories category;
+
+    @Column
+    @ElementCollection(targetClass = Integer.class)
+    private List<Integer> ratings;
+
+    @Column
+    private Double rating;
+
+    @Column
+    @ElementCollection(targetClass = Comment.class)
+    private List<Comment> comments;
+
+    @Column
+    private String description;
+
     @ManyToMany(mappedBy = "products")
     Set<Cart> carts;
-
-    public Product(){}
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Double getPrice() {
-        return price;
-    }
-
-    public void setPrice(Double price) {
-        this.price = price;
-    }
-
-    public Integer getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
-    }
-
-    public Set<Cart> getCarts() {
-        return carts;
-    }
-
-    public void setCarts(Set<Cart> carts) {
-        this.carts = carts;
-    }
 }

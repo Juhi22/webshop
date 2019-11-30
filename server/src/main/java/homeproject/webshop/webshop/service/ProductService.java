@@ -1,26 +1,43 @@
 package homeproject.webshop.webshop.service;
 
 import homeproject.webshop.webshop.domain.Product;
-import homeproject.webshop.webshop.repository.ProductRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
-public class ProductService {
+public interface ProductService {
 
-    @Autowired
-    private ProductRepository productRepository;
+    /**
+     * Add a product
+     *
+     * @param product Added product
+     * @return Product
+     */
+    Product addProduct(Product product);
 
-    //TODO
-    public Product addProduct(Product product){
-        return productRepository.save(product);
-    }
+    /**
+     * Get all products
+     *
+     * @return List<Products>
+     */
+    List<Product> getAllProducts();
 
-    //TODO //????
-    public List<Product> getAllProducts(){
-        return productRepository.findAll();
-    }
+    /**
+     * Add rating to product
+     *
+     * @param id Id of rated product
+     * @param rating Given rating to product
+     * @return Product
+     */
+    Product addNewRating(Long id, Integer rating);
+
+    /**
+     * Post a comment to the product
+     *
+     * @param text Commented text
+     * @param productId Id of product
+     * @param userId Id of user
+     * @return Product
+     */
+    Product postComment(String text, Long productId, Long userId);
 
 }

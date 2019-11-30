@@ -10,7 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @EnableWebSecurity
 public class BasicAuthConfiguration extends WebSecurityConfigurerAdapter {
 
-    *//*@Override
+    @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth
                 .inMemoryAuthentication()
@@ -28,5 +28,5 @@ public class BasicAuthConfiguration extends WebSecurityConfigurerAdapter {
                 .authenticated()
                 .and()
                 .httpBasic();
-    }*//*
+    }
 }*/

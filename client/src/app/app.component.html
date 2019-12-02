@@ -1,1 +1,18 @@
-<router-outlet></router-outlet>
+<ngx-mat-menu style="height: 100%;width: 100%;" 
+[arrMenuOptions]="arrMenuOptions" 
+[headerText]="headerText"
+[badgeColor]="badgeColor" 
+[headerIcon]="headerIcon" 
+[logoutIcon]="logoutIcon"
+[srcLogo]="srcLogo" 
+[heightLogo]="heightLogo"
+[widthLogo]="widthLogo"
+[lang]="lang" 
+[themeSidebar]="themeSidebar" 
+[themeHeader]="themeHeader" 
+[visibleNotif]="visibleNotif"
+[badge]="badge"
+(openNotif)="openNotif()"
+(logoutEvent)="logout()">
+    <router-outlet></router-outlet>
+</ngx-mat-menu>

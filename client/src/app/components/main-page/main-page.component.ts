@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Product } from 'src/app/model/product';
 import { ProductService } from 'src/app/services/api/product.service';
+import { NgxMatMenuService } from 'ngx-mat-menu';
 
 @Component({
   selector: 'app-main-page',
@@ -11,7 +12,11 @@ import { ProductService } from 'src/app/services/api/product.service';
 export class MainPageComponent implements OnInit, AfterViewInit {
 
   constructor(private http: HttpClient,
-              private productServ: ProductService) {}
+              private productServ: ProductService,
+              private ngxMatMenuService: NgxMatMenuService) {
+              ngxMatMenuService.changeMenu(true);
+              ngxMatMenuService.selectMenu(0);
+              }
 
     baseUrl: string = 'http://192.168.1.4:8050';
 

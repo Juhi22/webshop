@@ -10,8 +10,10 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { CookieService } from 'ngx-cookie-service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material';
+import { MatInputModule, MatButtonModule, MatIconModule, MatSliderModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { NgxMatMenuModule } from 'ngx-mat-menu';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,20 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     BrowserAnimationsModule,
     MatFormFieldModule,
     MatInputModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    NgxMatMenuModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    FlexLayoutModule,
+    NgxMatMenuModule,
+    CommonModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    AppRoutingModule,
+    MatIconModule,
+    MatSliderModule
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]

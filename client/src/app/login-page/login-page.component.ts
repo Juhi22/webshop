@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import { NgxMatMenuService } from 'ngx-mat-menu';
+import { BaseUrlService } from '../services/helpers/base-url.service';
+import { User } from 'src/app/model/user';
+import { UserService } from '../services/api/user.service';
 
 @Component({
   selector: 'app-login-page',
@@ -14,7 +18,14 @@ export class LoginPageComponent implements OnInit {
     private http: HttpClient,
     private route: ActivatedRoute,
     private router: Router,
-    private cookieService: CookieService) { }
+    private cookieService: CookieService,
+    private ngxMatMenuService: NgxMatMenuService,
+    private userService: UserService
+    ) { 
+      this.ngxMatMenuService.changeMenu(false);
+    }
+
+    user = {} as User;
 
   username: string = '';
   password: string = '';
@@ -60,8 +71,17 @@ export class LoginPageComponent implements OnInit {
   }
 
   keydownEnter() {
-    if(this.username && this.password) {
-      this.login();
+    if(this.user.userName && this.user.password) {
+      this.login2();
     }
+  }
+  login2() {
+    console.log(this.user)
+    this.userService.login(this.user).subscribe(
+      (data) => {
+        console.log('Login');
+      }
+    );
+    this.router.navigate(['main']);
   }
 }

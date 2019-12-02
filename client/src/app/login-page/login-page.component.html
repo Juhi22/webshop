@@ -1,3 +1,24 @@
+<div fxLayout="column" fxLayoutAlign="center center" style="height: 100%;">
+  <div fxLayout="column" fxLayoutAlign="center stretch" fxLayoutGap="20px" style="width: 400px; height: 400px;">
+    
+    <div fxLayout="row" fxLayoutAlign="center center" style="width: 100%;">
+      <mat-form-field style="max-width: 95%;margin: auto;">
+        <input matInput placeholder="Username *" [(ngModel)]="user.userName" (keydown.enter)="keydownEnter()"/>
+      </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="center center" style="width: 100%;">
+      <mat-form-field style="max-width: 95%;margin: auto;">
+        <input matInput type="password" placeholder="Password *" [(ngModel)]="user.password" (keydown.enter)="keydownEnter()"/>
+      </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <button mat-button (click)="login2()" [disabled]="!user.userName || !user.password">Login</button>
+    </div>
+   
+  </div>
+</div> 
+ 
+ <!--
  <div fxLayout="column" fxLayoutAlign="center center" style="height: 100%;" >
   <div fxLayout="column" fxLayoutAlign="center center">
     <p>
@@ -5,16 +26,17 @@
 
     </p>
     <span>
-      <input placeholder="Username" [(ngModel)]="username" (keydown.enter)="keydownEnter()">
+      <input placeholder="Username" [(ngModel)]="user.username" (keydown.enter)="keydownEnter()">
     </span>
   </div>
   <div fxLayout="column" fxLayoutAlign="center center">
     <p>
       Password
     </p>
-    <input placeholder="Password" [(ngModel)]="password" (keydown.enter)="keydownEnter()">
+    <input placeholder="Password" [(ngModel)]="user.password" (keydown.enter)="keydownEnter()">
   </div>
   <div style="margin-top: 10px">
-    <button (click)="login()" [disabled]="!username || !password">Login</button>
+    <button (click)="login2()" [disabled]="!user.username || !user.password">Login</button>
   </div>
 </div>
+-->

@@ -1,4 +1,5 @@
-/*package homeproject.webshop.webshop.controller;
+/*
+package homeproject.webshop.webshop.controller;
 
 import homeproject.webshop.webshop.domain.Cart;
 import homeproject.webshop.webshop.domain.Product;
@@ -16,9 +17,10 @@ public class LoginController {
     private UserService userService;
 
     @PostMapping("/isUserExists/{name}")
-    public String hello(@RequestParam ) {
+    public String hello(@RequestParam name) {
         return name;
     }
 
 
-}*/
+}
+*/

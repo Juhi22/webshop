@@ -36,6 +36,7 @@ public class UserServiceImpl implements UserService{
     }
 
     //TODO auth
+    @Override
     public WebShopUser isUserExists(WebShopUser user) {
         WebShopUser loginUser = userRepository.findByUserName(user.getUserName());
         if(loginUser.getPassword().equals(user.getPassword()) && !loginUser.isDeleted()) {

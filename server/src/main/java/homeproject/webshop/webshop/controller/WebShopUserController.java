@@ -36,6 +36,6 @@ public interface WebShopUserController {
      * @param user Webshop user
      * @return The user if it exists else return null
      */
-    ResponseEntity<WebSHopUser> login(WebShopUser user);
+    ResponseEntity<WebShopUser> login(WebShopUser user);
 
 }

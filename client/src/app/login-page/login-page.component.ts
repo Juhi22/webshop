@@ -82,10 +82,9 @@ export class LoginPageComponent implements OnInit {
     }
   }
   login2() {
-    console.log(this.user)
     this.userService.login(this.user).subscribe(
       (data) => {
-        console.log('Login');
+        console.log(data);
       }
     );
     this.router.navigate(['main']);

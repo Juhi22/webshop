@@ -1,9 +1,9 @@
 <div fxLayout="column" fxLayoutAlign="center center" style="height: 100%;  ">
 <div></div>
 <div>
-  <div fxLayout="column" fxLayoutAlign="center center" style="border: solid">
+  <div fxLayout="column" fxLayoutAlign="center center" >
     <div *ngIf="isLogin" fxLayout="column" fxLayoutAlign="center stretch" fxLayoutGap="20px" style="width: 400px; height: 400px;">
-      <div>
+      <div fxLayout="row" fxLayoutAlign="space-around start">
         <button mat-button (click)="btnChangeView()">Login</button>
         <button mat-button (click)="btnChangeView()">Register here</button>
       </div>
@@ -23,7 +23,7 @@
      
     </div>
     <div *ngIf="!isLogin" fxLayout="column" fxLayoutAlign="center stretch" fxLayoutGap="20px" style="width: 400px; height: 400px;">
-      <div>
+      <div fxLayout="row" fxLayoutAlign="space-around start">
         <button mat-button (click)="btnChangeView()">Login</button>
         <button mat-button (click)="btnChangeView()">Register here</button>
       </div>

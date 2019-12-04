@@ -15,4 +15,8 @@ baseUrl:string = this.baseUrlServ.getBaseUrl();
   login(user) {
     return this.httpClient.post(this.baseUrl + '/user/login', user);
   }
+
+  register(user) {
+    return this.httpClient.post(this.baseUrl + '/user/addUser', user);
+  }
 }

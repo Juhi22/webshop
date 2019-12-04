@@ -26,10 +26,12 @@ export class LoginPageComponent implements OnInit {
     }
 
     user = {} as User;
+    newUser = {} as User;
 
   username: string = '';
   password: string = '';
   cookieValue: string = '';
+  isLogin: boolean = true;
 
   ngOnInit() {
     //sessionStorage.setItem('token', '');
@@ -69,6 +71,10 @@ export class LoginPageComponent implements OnInit {
       }
     });
   }
+  btnChangeView() {
+    console.log('btnChangeView()');
+    this.isLogin = !this.isLogin;
+  }
 
   keydownEnter() {
     if(this.user.userName && this.user.password) {
@@ -83,5 +89,13 @@ export class LoginPageComponent implements OnInit {
       }
     );
     this.router.navigate(['main']);
+  }
+  registerUser() {
+    console.log('AddUser');
+    this.userService.register(this.newUser).subscribe(
+      (data: any) => {
+        console.log(data);
+      }
+    );
   }
 }

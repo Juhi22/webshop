@@ -30,12 +30,4 @@ public interface WebShopUserController {
      */
     ResponseEntity<WebShopUser> deleteUser(Long id);
 
-    /**
-     *Login to webshop
-     *
-     * @param user Webshop user
-     * @return The user if it exists else return null
-     */
-    ResponseEntity<WebShopUser> login(WebShopUser user);
-
 }

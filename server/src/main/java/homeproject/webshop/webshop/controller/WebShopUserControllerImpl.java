@@ -35,7 +35,6 @@ public class WebShopUserControllerImpl implements WebShopUserController{
     }
 
     //TODO auth
-    @Override
     @PostMapping("/login")
     public WebShopUser login(@RequestBody WebShopUser user) {
         return userService.isUserExists(user);

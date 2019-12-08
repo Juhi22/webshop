@@ -4,27 +4,24 @@ import homeproject.webshop.webshop.domain.Cart;
 import homeproject.webshop.webshop.domain.Product;
 import homeproject.webshop.webshop.domain.ProductCategories;
 import homeproject.webshop.webshop.domain.WebShopUser;
-import homeproject.webshop.webshop.repository.CartRepository;
-import homeproject.webshop.webshop.repository.ProductRepository;
-import homeproject.webshop.webshop.repository.UserRepository;
+import homeproject.webshop.webshop.service.CartServiceImpl;
+import homeproject.webshop.webshop.service.ProductServiceImpl;
+import homeproject.webshop.webshop.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-
-import java.util.HashSet;
-import java.util.Set;
 
 @Component
 public class InitDataLoader implements CommandLineRunner {
 
     @Autowired
-    private UserRepository webShopUserRepository;
+    private UserService userService;
 
     @Autowired
-    private CartRepository cartRepository;
+    private CartServiceImpl cartService;
 
     @Autowired
-    private ProductRepository productRepository;
+    private ProductServiceImpl productService;
 
     @Override
     public void run(String... args) throws Exception {
@@ -37,6 +34,7 @@ public class InitDataLoader implements CommandLineRunner {
         user1.setUserName("Peter");
         user1.setPassword("12345");
         user1.setDeleted(false);
+        user1.setCart(cart1);
 
         product1.setName("cheese");
         product1.setCategory(ProductCategories.FOOD);
@@ -50,17 +48,13 @@ public class InitDataLoader implements CommandLineRunner {
         product2.setDescription("block game for kids and adults");
         product2.setPrice(2000.0);
 
-        user1.setCart(cart1);
+        userService.addUser(user1);
+        cartService.addCart(cart1);
+        productService.addProduct(product1);
+        productService.addProduct(product2);
 
-        webShopUserRepository.save(user1);
-
-        productRepository.save(product1);
-        productRepository.save(product2);
-
-        cart1.getProducts().add(product1);
-        cart1.getProducts().add(product2);
-
-        webShopUserRepository.save(user1);
+        cartService.addProductToCart(product1, cart1.getId());
+        cartService.addProductToCart(product2, cart1.getId());
     }
 
 }

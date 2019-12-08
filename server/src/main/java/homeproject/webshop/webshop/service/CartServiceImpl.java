@@ -26,8 +26,10 @@ public class CartServiceImpl implements CartService {
 
     @Override
     public Cart addProductToCart(Product product, Long id){
+        Cart cart = cartRepository.findById(id).get();
         if(cartRepository.findById(id).isPresent()) {
-            cartRepository.findById(id).get().getProducts().add(product);
+            cart.getProducts().add(product);
+            cartRepository.save(cart);
         }
         return cartRepository.findById(id).get();
     }

@@ -1,6 +1,5 @@
 package homeproject.webshop.webshop.domain;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,8 +9,8 @@ import java.util.Set;
 
 @Entity
 @Table(name = "product")
-@Getter
 @Setter
+@Getter
 public class Product {
 
     @Id

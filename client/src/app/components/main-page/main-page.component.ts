@@ -18,7 +18,7 @@ export class MainPageComponent implements OnInit, AfterViewInit {
               ngxMatMenuService.selectMenu(0);
               }
 
-    baseUrl: string = 'http://192.168.1.4:8050';
+    baseUrl: string = 'http://localhost:8050';
 
   products: Product[] = [];
   product = {} as Product;

@@ -2,6 +2,7 @@ package homeproject.webshop.webshop.controller;
 
 import homeproject.webshop.webshop.domain.WebShopUser;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
@@ -29,5 +30,13 @@ public interface WebShopUserController {
      * @return ResponseEntity<WebShopUser>
      */
     ResponseEntity<WebShopUser> deleteUser(Long id);
+
+    /**
+     * Log in user
+     *
+     * @param user A user with given username and password
+     * @return If user exists return user
+     */
+    WebShopUser login(@RequestBody WebShopUser user);
 
 }

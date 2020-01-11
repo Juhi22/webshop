@@ -1,5 +1,6 @@
 package homeproject.webshop.webshop.service;
 
+import homeproject.webshop.webshop.domain.Cart;
 import homeproject.webshop.webshop.domain.WebShopUser;
 import homeproject.webshop.webshop.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,6 +55,8 @@ public class UserServiceImpl implements UserService{
             //TODO
             throw new Error();
         }
+        Cart cart = new Cart();
+        user.setCart(cart);
         return userRepository.save(user);
     }
 

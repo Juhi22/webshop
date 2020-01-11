@@ -1,8 +1,10 @@
 package homeproject.webshop.webshop.service;
 
+import homeproject.webshop.webshop.domain.Cart;
 import homeproject.webshop.webshop.domain.Comment;
 import homeproject.webshop.webshop.domain.Product;
 import homeproject.webshop.webshop.domain.WebShopUser;
+import homeproject.webshop.webshop.repository.CartRepository;
 import homeproject.webshop.webshop.repository.CommentRepository;
 import homeproject.webshop.webshop.repository.ProductRepository;
 import homeproject.webshop.webshop.repository.UserRepository;
@@ -23,6 +25,9 @@ public class ProductServiceImpl implements ProductService{
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private CartRepository cartRepository;
 
     @Override
     public Product addProduct(Product product){
@@ -72,5 +77,13 @@ public class ProductServiceImpl implements ProductService{
         commentRepository.save(comment);
         productRepository.save(recentProduct);
         return recentProduct;
+    }
+
+    //TODO ovverride it, validate it
+    public void removeProduct(Long userId, Long productId) {
+        Cart cart = cartRepository.findById(userId).get();
+        Product product = productRepository.findById(productId).get();
+        cart.getProducts().remove(product);
+        cartRepository.save(cart);
     }
 }

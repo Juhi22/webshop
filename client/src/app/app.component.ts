@@ -24,7 +24,7 @@ export class AppComponent {
   lang: string;
   visibleNotif: boolean;
   badge: number = 5;
- 
+
 constructor(private router: Router) {
     this.themeSidebar = {background: 'whiblte', color: 'black'};
     this.themeHeader = {background: 'blue', color: 'white'};
@@ -44,7 +44,7 @@ constructor(private router: Router) {
 
 openNotif(event) {
   this.badge = 0;
-  
+
 }
 
 logout() {

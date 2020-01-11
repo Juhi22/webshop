@@ -21,7 +21,7 @@ export class LoginPageComponent implements OnInit {
     private cookieService: CookieService,
     private ngxMatMenuService: NgxMatMenuService,
     private userService: UserService
-    ) { 
+    ) {
       this.ngxMatMenuService.changeMenu(false);
     }
 
@@ -71,17 +71,20 @@ export class LoginPageComponent implements OnInit {
   }
 
   keydownEnter() {
-    if(this.user.userName && this.user.password) {
+    if (this.user.userName && this.user.password) {
       this.login2();
     }
   }
   login2() {
-    console.log(this.user)
+    console.log(this.user);
     this.userService.login(this.user).subscribe(
       (data) => {
-        console.log('Login');
-      }
+        this.router.navigate(['main']);
+
+      }, error => {
+        console.log(error);
+
+        }
     );
-    this.router.navigate(['main']);
   }
 }

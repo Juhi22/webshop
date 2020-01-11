@@ -13,8 +13,12 @@ import java.util.List;
 @RequestMapping("/cart")
 public class CartControllerImpl implements CartController {
 
-    @Autowired
     private CartServiceImpl cartService;
+
+    @Autowired
+    public CartControllerImpl(CartServiceImpl cartService) {
+        this.cartService = cartService;
+    }
 
     @Override
     @PostMapping("/addCart")

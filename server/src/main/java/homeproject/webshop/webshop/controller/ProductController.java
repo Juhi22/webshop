@@ -2,6 +2,7 @@ package homeproject.webshop.webshop.controller;
 
 import homeproject.webshop.webshop.domain.Product;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -48,4 +49,12 @@ public interface ProductController {
      * @return ResponseEntity<Product>
      */
     ResponseEntity<Product> postComment(String text, Long productId, Long userId);
+
+    /**
+     * Remove given product from the cart of the given user
+     *
+     * @param userId Id of the user
+     * @param productId Id of the product
+     */
+    void removeProduct(Long userId, Long productId);
 }

@@ -4,6 +4,8 @@ import homeproject.webshop.webshop.domain.WebShopUser;
 import homeproject.webshop.webshop.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.client.HttpClientErrorException;
 
 import java.util.List;
 
@@ -43,6 +45,16 @@ public class UserServiceImpl implements UserService{
             return loginUser;
         }
         return null;
+    }
+
+    @Override
+    public WebShopUser registration(@RequestBody WebShopUser user) {
+        WebShopUser existingUser = userRepository.findByUserName(user.getUserName());
+        if(existingUser != null) {
+            //TODO
+            throw new Error();
+        }
+        return userRepository.save(user);
     }
 
 }

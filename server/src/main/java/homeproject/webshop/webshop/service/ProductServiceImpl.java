@@ -6,6 +6,7 @@ import homeproject.webshop.webshop.domain.WebShopUser;
 import homeproject.webshop.webshop.repository.CommentRepository;
 import homeproject.webshop.webshop.repository.ProductRepository;
 import homeproject.webshop.webshop.repository.UserRepository;
+import org.apache.tomcat.jni.Error;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,6 +27,15 @@ public class ProductServiceImpl implements ProductService{
     @Override
     public Product addProduct(Product product){
         return productRepository.save(product);
+    }
+
+    @Override
+    public Product getProduct(Long id) {
+        try {
+            return productRepository.findById(id).get();
+        } catch (NullPointerException exception) {
+            throw new NullPointerException();
+        }
     }
 
     @Override

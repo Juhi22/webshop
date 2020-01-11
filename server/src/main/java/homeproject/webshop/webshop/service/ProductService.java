@@ -15,6 +15,14 @@ public interface ProductService {
     Product addProduct(Product product);
 
     /**
+     * Get a product by its id.
+     *
+     * @param id Id of the product
+     * @return {@link Product}
+     */
+    Product getProduct(Long id);
+
+    /**
      * Get all products
      *
      * @return List<Products>

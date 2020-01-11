@@ -23,6 +23,12 @@ public class ProductControllerImpl implements ProductController {
     }
 
     @Override
+    @GetMapping("/getProduct/{id}")
+    public Product getProduct(@PathVariable Long id){
+        return productService.getProduct(id);
+    }
+
+    @Override
     @GetMapping("/getAllProducts")
     public ResponseEntity<List<Product>> getAllProducts(){
         return ResponseEntity.ok(productService.getAllProducts());

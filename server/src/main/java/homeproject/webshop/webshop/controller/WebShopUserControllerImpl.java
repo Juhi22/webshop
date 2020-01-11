@@ -40,4 +40,10 @@ public class WebShopUserControllerImpl implements WebShopUserController{
     public WebShopUser login(@RequestBody WebShopUser user) {
         return userService.isUserExists(user);
     }
+
+    @Override
+    @PostMapping("/registration")
+    public WebShopUser registration(@RequestBody WebShopUser user) {
+        return userService.registration(user);
+    }
 }

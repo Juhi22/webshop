@@ -14,12 +14,14 @@ import { MatInputModule, MatButtonModule, MatIconModule, MatSliderModule } from 
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgxMatMenuModule } from 'ngx-mat-menu';
 import { CommonModule } from '@angular/common';
+import { ProductComponent } from './components/shared/product/product.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainPageComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,

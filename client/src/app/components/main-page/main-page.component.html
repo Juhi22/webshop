@@ -29,7 +29,7 @@
         </div>
         <div *ngFor="let product of products" fxLayout="row" fxLayoutAlign="start center" 
             fxLayout.xs="column" fxLayoutAlign.xs="center start">
-          <span fxFlex="50">
+          <span fxFlex="50" (click)="viewProduct(product)" style="cursor: pointer">
             {{product.name}}
           </span>
           <span fxFlex="50">

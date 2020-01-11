@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Product } from 'src/app/model/product';
 import { ProductService } from 'src/app/services/api/product.service';
 import { NgxMatMenuService } from 'ngx-mat-menu';
+import { Router } from '@angular/router';
+import { DatasService } from 'src/app/services/helpers/datas.service';
 
 @Component({
   selector: 'app-main-page',
@@ -13,7 +15,9 @@ export class MainPageComponent implements OnInit, AfterViewInit {
 
   constructor(private http: HttpClient,
               private productServ: ProductService,
-              private ngxMatMenuService: NgxMatMenuService) {
+              private ngxMatMenuService: NgxMatMenuService,
+              private router: Router,
+              private datasService: DatasService) {
               ngxMatMenuService.changeMenu(true);
               ngxMatMenuService.selectMenu(0);
               }
@@ -45,7 +49,7 @@ export class MainPageComponent implements OnInit, AfterViewInit {
   }
 
   getProducts() {
-    this.productServ.getProducts()
+    this.productServ.getAllProducts()
     .subscribe(data => this.products = data);
   }
 
@@ -63,6 +67,11 @@ export class MainPageComponent implements OnInit, AfterViewInit {
       return true;
     }
     return false;
+  }
+
+  viewProduct(product) {
+    this.datasService.setUserId(product.id);
+    this.router.navigate(['product']);
   }
 
 }

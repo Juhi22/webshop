@@ -14,11 +14,15 @@ export class ProductService {
 
     baseUrl: string = this.baseUrlServ.getBaseUrl();
 
-  getProducts() {
+  getAllProducts() {
     return this.httpClient.get<Product[]>(this.baseUrl + '/product/getAllProducts');
   }
 
   addProduct(product) {
     this.httpClient.post<Product>(this.baseUrl + '/product/addProduct', product);
+  }
+
+  getOneProduct(productId) {
+   return this.httpClient.get(this.baseUrl + '/product/getProduct/' + productId);
   }
 }

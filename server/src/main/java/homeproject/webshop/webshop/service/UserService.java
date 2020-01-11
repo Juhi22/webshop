@@ -37,4 +37,12 @@ public interface UserService {
      */
     WebShopUser isUserExists(WebShopUser user);
 
+    /**
+     * Register an user
+     *
+     * @param user User which is wanted to be registered
+     * @return If success return the user
+     */
+    WebShopUser registration(WebShopUser user);
+
 }

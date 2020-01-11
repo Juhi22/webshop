@@ -21,6 +21,21 @@ public class WebShopUser {
     @Column
     private String password;
 
+    @Column
+    private String email;
+
+    @Column
+    private String zipCode;
+
+    @Column
+    private String city;
+
+    @Column
+    private String street;
+
+    @Column
+    private String houseNumber;
+
     @Column(name = "is_deleted")
     private boolean isDeleted;
 

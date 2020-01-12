@@ -13,8 +13,12 @@ import java.util.List;
 @RequestMapping("/user")
 public class WebShopUserControllerImpl implements WebShopUserController{
 
-    @Autowired
     private UserServiceImpl userService;
+
+    @Autowired
+    public WebShopUserControllerImpl(UserServiceImpl userService) {
+        this.userService = userService;
+    }
 
     @Override
     @PostMapping("/addUser")

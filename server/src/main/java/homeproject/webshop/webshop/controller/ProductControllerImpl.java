@@ -1,6 +1,7 @@
 package homeproject.webshop.webshop.controller;
 
 import homeproject.webshop.webshop.domain.Product;
+import homeproject.webshop.webshop.domain.WebShopUser;
 import homeproject.webshop.webshop.service.ProductServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -13,8 +14,12 @@ import java.util.List;
 @RequestMapping("/product")
 public class ProductControllerImpl implements ProductController {
 
-    @Autowired
     private ProductServiceImpl productService;
+
+    @Autowired
+    public ProductControllerImpl(ProductServiceImpl productService) {
+        this.productService = productService;
+    }
 
     @Override
     @PostMapping("/addProduct")
@@ -46,4 +51,9 @@ public class ProductControllerImpl implements ProductController {
         return ResponseEntity.ok(productService.postComment(text, productId, userId));
     }
 
+    @Override
+    @PutMapping("/removeProduct/{userId}/{productId}")
+    public void removeProduct(@PathVariable Long userId, @PathVariable Long productId) {
+        productService.removeProduct(userId, productId);
+    }
 }

@@ -21,10 +21,16 @@ public class WebShopUser {
     @Column
     private String password;
 
+    @Column(name = "first_name")
+    private String firstName;
+
+    @Column(name = "last_name")
+    private String lastName;
+
     @Column
     private String email;
 
-    @Column
+    @Column(name = "zip_code")
     private String zipCode;
 
     @Column
@@ -33,7 +39,7 @@ public class WebShopUser {
     @Column
     private String street;
 
-    @Column
+    @Column(name = "house_number")
     private String houseNumber;
 
     @Column(name = "is_deleted")

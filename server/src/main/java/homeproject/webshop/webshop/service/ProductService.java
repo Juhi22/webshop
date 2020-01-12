@@ -48,4 +48,12 @@ public interface ProductService {
      */
     Product postComment(String text, Long productId, Long userId);
 
+    /**
+     * Remove given product from the cart of the given user
+     *
+     * @param userId Id of the user
+     * @param productId Id of the product
+     */
+    void removeProduct(Long userId, Long productId);
+
 }

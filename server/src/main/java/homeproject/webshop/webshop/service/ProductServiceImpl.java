@@ -1,8 +1,10 @@
 package homeproject.webshop.webshop.service;
 
+import homeproject.webshop.webshop.domain.Cart;
 import homeproject.webshop.webshop.domain.Comment;
 import homeproject.webshop.webshop.domain.Product;
 import homeproject.webshop.webshop.domain.WebShopUser;
+import homeproject.webshop.webshop.repository.CartRepository;
 import homeproject.webshop.webshop.repository.CommentRepository;
 import homeproject.webshop.webshop.repository.ProductRepository;
 import homeproject.webshop.webshop.repository.UserRepository;
@@ -15,14 +17,21 @@ import java.util.List;
 @Service
 public class ProductServiceImpl implements ProductService{
 
-    @Autowired
     private ProductRepository productRepository;
 
-    @Autowired
     private CommentRepository commentRepository;
 
-    @Autowired
     private UserRepository userRepository;
+
+    private CartRepository cartRepository;
+
+    @Autowired
+    public ProductServiceImpl(ProductRepository productRepository, CommentRepository commentRepository, UserRepository userRepository, CartRepository cartRepository) {
+        this.productRepository = productRepository;
+        this.commentRepository = commentRepository;
+        this.userRepository = userRepository;
+        this.cartRepository = cartRepository;
+    }
 
     @Override
     public Product addProduct(Product product){
@@ -72,5 +81,15 @@ public class ProductServiceImpl implements ProductService{
         commentRepository.save(comment);
         productRepository.save(recentProduct);
         return recentProduct;
+    }
+
+    @Override
+    public void removeProduct(Long userId, Long productId) {
+        if(cartRepository.findById(userId).isPresent() && productRepository.findById(productId).isPresent()) {
+            Cart cart = cartRepository.findById(userId).get();
+            Product product = productRepository.findById(productId).get();
+            cart.getProducts().remove(product);
+            cartRepository.save(cart);
+        }
     }
 }
